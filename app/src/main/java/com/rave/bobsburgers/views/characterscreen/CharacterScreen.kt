@@ -1,5 +1,6 @@
 package com.rave.bobsburgers.views.characterscreen
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,36 +21,53 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.rave.bobsburgers.model.local.BobCharacter
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CharacterScreen(state: CharacterScreenState, searchQuery: String, onSearchQueryChange: (String) -> Unit, onClick: (BobCharacter) -> Unit) {
-    Column {
-        OutlinedTextField(
-            value = searchQuery,
-            onValueChange = onSearchQueryChange,
-            label = { Text(text = "Search") },
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth()
-        )
-        LazyColumn(
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            val filteredCharacters = state.characters.filter {
-                it.name.contains(searchQuery, ignoreCase = true)
-            }
-            items(filteredCharacters) { character ->
-                CharacterCard(character, onClick)
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Characters") },
+                colors = TopAppBarDefaults.smallTopAppBarColors(Color.Gray),
+            )
+        }
+    ) {
+        Column {
+            Spacer(Modifier.height(56.dp))
+
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = onSearchQueryChange,
+                label = { Text(text = "Search") },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth()
+            )
+            LazyColumn(
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                val filteredCharacters = state.characters.filter {
+                    it.name.contains(searchQuery, ignoreCase = true)
+                }
+                items(filteredCharacters) { character ->
+                    CharacterCard(character, onClick)
+                }
             }
         }
     }

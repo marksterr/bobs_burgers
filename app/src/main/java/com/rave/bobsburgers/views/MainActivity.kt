@@ -86,7 +86,10 @@ class MainActivity : ComponentActivity() {
                 val characterId = backStackEntry.arguments?.getString("characterId")
                 val character = characterViewModel.getCharacterById(characterId!!.toInt())
                 if (character != null) {
-                    BobsDetailScreen(BobsDetailScreenState(currentBob = character))
+                    BobsDetailScreen(
+                        BobsDetailScreenState(currentBob = character),
+                        onBack = { navController.popBackStack() }
+                    )
                 } else {
                     Text("Error: character not found") // Handle the error appropriately
                 }
