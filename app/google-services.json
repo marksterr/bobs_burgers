@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "219240974130",
+    "project_id": "bobs-burgers-f7394",
+    "storage_bucket": "bobs-burgers-f7394.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219240974130:android:17616bcd0b3241c91ef92b",
+        "android_client_info": {
+          "package_name": "com.rave.mealapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "219240974130-44st1j7n7snlb94tr9a6naened7nlrj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBfKTUSO8rHTNNGht3UI8zlt5xQAxgtEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "219240974130-44st1j7n7snlb94tr9a6naened7nlrj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
